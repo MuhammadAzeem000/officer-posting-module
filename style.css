@@ -1,0 +1,21 @@
+.officer-card {
+    border-radius: 5px;
+    padding: 1rem;
+    cursor: grab;
+}
+
+.officer-card:active {
+    cursor: grabbing;
+}
+
+.officer-card:hover {
+    background-color: #f7f7f7;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.dragover {
+    background-color: #e0e0e0;
+}
