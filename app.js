@@ -1,333 +1,70 @@
-const officer = [{
-    Id: 1594,
-    Officer_Name: 'Asif Hyder Shah ( PAS) BS-22',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Chief Secretary, Sindh',
-    Department_Name: 'Services, General Administration & Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 628,
-    Officer_Name: 'Zahid Ali Abbasi ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'School Education & Literacy Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 635,
-    Officer_Name: 'Waseem Shamshad Ali ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Rehabilitation Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-
-{
-    Id: 632,
-    Officer_Name: 'Rafique Ahmed Buriro ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Agriculture Supply & Prices Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 630,
-    Officer_Name: 'Najam Ahmed Shah ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Chairman / Chairperson (BS-22/21)',
-    Department_Name: 'Planning & Development Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 699,
-    Officer_Name: 'Musaddiq Ahmed Khan',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Energy Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 1004,
-    Officer_Name: 'Muhammad Iqbal Memon',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Additional Chief Secretary',
-    Department_Name: 'Home Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1537,
-    Officer_Name: 'Mr.Shakeel Ahmed Mangnejo',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Chairman',
-    Department_Name: 'Chief Minister Inspection, Enquiries & Implementation Team',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1574,
-    Officer_Name: 'Mr.Manzoor Ali Shaikh',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Awaiting Posting',
-    Department_Name: 'Services, General Administration & Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 631,
-    Officer_Name: 'Khalid Hyder Shah ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Additional Chief Secretary (BS-21)',
-    Department_Name: 'Local Government & HTP',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1047,
-    Officer_Name: 'Kazim Hussain Jatoi ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Livestock & Fisheries Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 1582,
-    Officer_Name: 'Akram Ali Khowaja ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Awaiting Posting',
-    Department_Name: 'Services, General Administration & Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 1475,
-    Officer_Name: 'Agha Wasif Abbas ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Principal Secretary',
-    Department_Name: 'Chief Minister Secretariat',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 633,
-    Officer_Name: 'Abdul Waheed Shaikh ( PAS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Awaiting Posting',
-    Department_Name: 'Services, General Administration &Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 652,
-    Officer_Name: 'Saeed Ahmed Awan ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Training, Management & Research Wing,SGA&CD',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 654,
-    Officer_Name: 'Iqbal Ahmed Soomro ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Member (Judicial)',
-    Department_Name: 'Board of Revenue Sindh',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-{
-    Id: 649,
-    Officer_Name: 'Imtiaz Ali Shah ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Managing Director',
-    Department_Name: 'Sindh Solid Waste Management Board(SSWMB)',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 955,
-    Officer_Name: 'Ghulam Mustafa Phul ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Commissioner, Larkana Division',
-    Department_Name: 'Board of Revenue Sindh',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1344,
-    Officer_Name: 'Danish Saeed ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Member (Judicial-III)',
-    Department_Name: 'Board of Revenue Sindh',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 643,
-    Officer_Name: 'Baqaullah Unnar ( Ex-PCS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Senior Member, Board of Revenue',
-    Department_Name: 'Board of Revenue Sindh',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 742,
-    Officer_Name: 'Dr. Shereen Mustafa ( PSS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Awaiting Posting',
-    Department_Name: 'Services, General Administration &Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 730,
-    Officer_Name: 'Dr. Badar Jamil Mendhro ( PSS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Forest & Wildlife Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 738,
-    Officer_Name: 'ABDUL RASHEED SOLANGI ( PSS) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Director General',
-    Department_Name: 'Sindh Building Control Authority',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1447,
-    Officer_Name: 'Mr. Muhammad Yaseen Shar Baloch (Secretariat Group) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Secretary',
-    Department_Name: 'Industries & Commerce Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-}, {
-    Id: 1596,
-    Officer_Name: 'Farhat Ali Junejo ( PSP) BS-21',
-    Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
-    Main_Postion: 'Awaiting Posting',
-    Department_Name: 'Services, General Administration & Coordination Department',
-    Additional_Charge: [],
-    isPosted: true,
-    isAwaiting: false,
-    isAdditionalCharge: true,
-    isDepartmentDrop: false,
-},
-
+const officer = [
+    {
+        Id: 628,
+        Officer_Name: 'Zahid Ali Abbasi',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        Department_Name: 'School Education & Literacy Department',
+        isCancel: false,
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 635,
+        Officer_Name: 'Waseem Shamshad Ali',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        Department_Name: 'Rehabilitation Department',
+        isCancel: false,
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
 ]
 
 const department = [{
     Id: 1,
     Department_Name: 'Agriculture Department',
-    Position: 'Secretary',
+    Main_Position: 'Secretary',
     isVancany: true,
-    Which_Vacany: ['Additional_Charge 01'],
-    Officer: []
+    Occupied_By: '',
+    Officer: [],
 },
 {
     Id: 2,
     Department_Name: 'Irrigation Department',
-    Position: 'Secretary',
+    Main_Position: 'Secretary',
     isVancany: true,
-    Which_Vacany: ['Additional_Charge 01'],
+    Occupied_By: '',
     Officer: []
 },
 {
     Id: 3,
     Department_Name: 'College Education Department',
-    Position: 'Secretary',
+    Main_Position: 'Secretary',
     isVancany: true,
-    Which_Vacany: ['Additional_Charge 01'],
+    Occupied_By: '',
     Officer: []
 },
 {
     Id: 4,
     Department_Name: 'Finance Department',
-    Position: 'Secretary',
+    Main_Position: 'Secretary',
     isVancany: false,
-    Which_Vacany: [],
+    Occupied_By: '',
     Officer: []
 },
 {
-    Id: 3,
+    Id: 5,
     Department_Name: 'Information Sciecne & Technology Department',
-    Position: 'Secretary',
+    Main_Position: 'Secretary',
     isVancany: true,
-    Which_Vacany: ['Additional_Charge 01'],
+    Occupied_By: '',
     Officer: []
 }
 ]
@@ -341,23 +78,69 @@ window.onload = function () {
         $('#no-vacancy').modal('hide')
     })
 
-    let CurrentCardObject, CurrentCard, CurrentDropZone, currentDepartmentData, currentOfficerData;
+    let CurrentCard, CurrentDropZone, currentDepartmentData, currentOfficerData;
 
     const fnGetterAttribute = (name, element) => {
         const o = element.getAttribute(name);
         return JSON.parse(o);
     }
 
-    const fnUpdateOfficerCardState = (o) => {
-        // <div class="label label-xl label-inline w-100 mt-2 label-light-success">Drop Here</div>
+    const fnPositionLabel = (o) => {
+        debugger;
+        const { Department_Name, Main_Position, isCancel } = o;
+
+        // Create label div
+        const labelDiv = document.createElement('div');
+        labelDiv.classList.add('label', 'label-xl', 'label-inline', 'label-light-success', 'mb-2', 'justify-content-between', 'h-auto', 'w-100');
+
+        const titleDiv = document.createElement('div');
+
+        // Create span for first part of label
+        const span1 = document.createElement('span');
+        span1.classList.add('mr-2');
+        span1.textContent = `${Department_Name} |`;
+
+        // Create span for second part of label
+        const span2 = document.createElement('span');
+        span2.classList.add('text-dark');
+        span2.textContent = Main_Position;
+
+        // Append spans to labelDiv
+        titleDiv.appendChild(span1);
+        titleDiv.appendChild(span2);
+
+        labelDiv.append(titleDiv);
+
+        if (isCancel === true) {
+            const button = document.createElement('button');
+            button.classList.add('btn', 'btn-light-danger', 'btn-sm', 'ml-2');
+            button.textContent = 'Cancel'
+            button.addEventListener('click', fnCancelPosition);
+            labelDiv.appendChild(button);
+        }
+
+        return labelDiv;
     }
 
-    const fnUpdateDepartmentCardState = (o) => {
+    const fnCancelPosition = () => {
+        alert("Would to like to cancel?");
+        officer.forEach(o => {
+            if (o.Id == currentOfficerData.Id) {
+                const x = { Id: 1, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
+                o.Additional_Charge.push(x);
+                updatedOfficer = o;
+            }
+        })
 
+        department.forEach(o => {
+            if (o.Id == currentDepartmentData.Id) {
+                o.Officer.push(updatedOfficer);
+            }
+        })
     }
 
     const fnOfficerCard = (o) => {
-        const { Id, Officer_Name, Profile_ImgURL, isPosted, Main_Postion, Department_Name, Additional_Charge } = o
+        const { Id, Officer_Name, Profile_ImgURL, isPosted, Main_Position, Department_Name, Additional_Charge } = o
 
         // Create main div element
         const mainDiv = document.createElement('div');
@@ -398,27 +181,25 @@ window.onload = function () {
         nameDiv.classList.add('text-dark', 'text-hover-primary', 'mb-1', 'font-size-lg', 'font-weight-800');
         nameDiv.textContent = Officer_Name;
 
+        //Create Parent Div
+        const labelParentDiv = document.createElement('div')
+        labelParentDiv.setAttribute('id', "PositionBadgesContainer");
+        labelParentDiv.classList.add('w-100');
+
         // Create label div
-        const labelDiv = document.createElement('div');
-        labelDiv.classList.add('label', 'label-xl', 'label-inline', 'label-light-success', 'mb-2', 'justify-content-start', 'h-auto');
-
-        // Create span for first part of label
-        const span1 = document.createElement('span');
-        span1.classList.add('mr-2');
-        span1.textContent = `${Department_Name} |`;
-
-        // Create span for second part of label
-        const span2 = document.createElement('span');
-        span2.classList.add('text-dark');
-        span2.textContent = Main_Postion;
-
-        // Append spans to labelDiv
-        labelDiv.appendChild(span1);
-        labelDiv.appendChild(span2);
+        const labelDiv = fnPositionLabel(o);
 
         // Append nameDiv and labelDiv to flexColumnDiv
         flexColumnDiv.appendChild(nameDiv);
-        flexColumnDiv.appendChild(labelDiv);
+        labelParentDiv.appendChild(labelDiv);
+
+        if (Additional_Charge.length > 0) {
+            Additional_Charge.forEach(x => {
+                labelParentDiv.appendChild(fnPositionLabel(x))
+            });
+        }
+
+        flexColumnDiv.appendChild(labelParentDiv);
 
         // Append flexColumnDiv to mainDiv
         mainDiv.appendChild(flexColumnDiv);
@@ -431,84 +212,8 @@ window.onload = function () {
 
     }
 
-    const fnOfficerCardOriginal = (o) => {
-        const { Id, Officer_Name, Profile_ImgURL, isPosted, Main_Postion, Additional_Charge } = o
-
-        // Create parent container
-        const container = document.createElement('div');
-        container.setAttribute("draggable", "true");
-        container.setAttribute('data-officer', JSON.stringify(o));
-        container.setAttribute('data-id', Id);
-        container.classList.add('d-flex', 'align-items-center', 'mb-5', 'officer-card');
-
-        // Create symbol div
-        const symbolDiv = document.createElement('div');
-        symbolDiv.classList.add('symbol', 'symbol-40', 'symbol-light-success', 'mr-5');
-
-        // Create symbol label (img)
-        const symbolLabel = document.createElement('span');
-        symbolLabel.classList.add('symbol-label');
-
-        const img = document.createElement('img');
-        img.src = Profile_ImgURL;
-        img.classList.add('h-75', 'align-self-end');
-        img.alt = '';
-
-        symbolLabel.appendChild(img);
-        symbolDiv.appendChild(symbolLabel);
-
-        // Append symbolDiv to container
-        container.appendChild(symbolDiv);
-
-        // Create text section
-        const textDiv = document.createElement('div');
-        textDiv.classList.add('d-flex', 'flex-column', 'flex-grow-1', 'font-weight-bold');
-
-        // Create first line of text
-        const firstLine = document.createElement('div');
-        firstLine.classList.add('d-flex', 'align-items-center', 'justify-content-between');
-
-        const officerName = document.createElement('span');
-        officerName.innerHTML = `<span class="text-dark text-hover-primary mb-1 font-size-lg">${Officer_Name}</span><span class="text-muted ml-2">${Main_Postion}</span>`;
-
-        const postedLabel = document.createElement('span');
-        postedLabel.classList.add('label', 'label-xl', 'label-inline', `${isPosted ? 'label-light-success' : 'label-light-danger'}`);
-
-        postedLabel.textContent = isPosted ? 'Posted' : 'Awaiting Posting';
-
-        firstLine.appendChild(officerName);
-        firstLine.appendChild(postedLabel);
-
-        // Create second line of text
-        const secondLine = document.createElement('span');
-
-        const additionChargeLabel = document.createElement('span');
-        additionChargeLabel.classList.add('label', 'label-md', 'label-inline', 'label-light-success', 'mr-2');
-        additionChargeLabel.textContent = 'Addition Charge:';
-
-        const sectionOfficers = document.createElement('span');
-        sectionOfficers.classList.add('text-muted');
-        sectionOfficers.textContent = Additional_Charge.join(', ');
-
-        secondLine.appendChild(additionChargeLabel);
-        secondLine.appendChild(sectionOfficers);
-
-        // Append firstLine and secondLine to textDiv
-        textDiv.appendChild(firstLine);
-        textDiv.appendChild(secondLine);
-
-        // Append textDiv to container
-        container.appendChild(textDiv);
-
-        //DRAG FUNCTIONALITY
-        container.addEventListener("dragstart", dragStart); //click on image to drag
-        container.addEventListener("dragend", dragEnd);      //after you completed dragDrop
-
-        return container;
-    }
-
     const fnDepartmentCard = (o) => {
-        const { Id, Department_Name, isVancany, Which_Vacany, Officer, Position } = o;
+        const { Id, Department_Name, Main_Position, isVancany, Which_Vacany, Officer, Position, OB } = o;
         // Create parent container
         const container = document.createElement('div');
         container.setAttribute('data-id', Id);
@@ -528,12 +233,12 @@ window.onload = function () {
 
         // Create first line of text
         const firstLine = document.createElement('div');
-        firstLine.classList.add('d-flex', 'align-items-center', 'justify-content-between');
+        firstLine.classList.add('d-flex', 'align-items-center', 'justify-content-between', 'mb-2');
 
         const departmentLink = document.createElement('a');
         departmentLink.href = '#';
         departmentLink.classList.add('text-dark-75', 'text-hover-primary', 'font-weight-bold', 'font-size-lg', 'mb-1');
-        departmentLink.textContent = Department_Name;
+        departmentLink.textContent = Department_Name + " - " + Main_Position;
 
         const availabilitySpan = document.createElement('span');
         availabilitySpan.classList.add('label', 'label-xl', 'label-inline', `label-light-${isVancany ? 'danger' : 'success'}`);
@@ -545,7 +250,9 @@ window.onload = function () {
         // Create second line of text
         const secondLine = document.createElement('span');
         secondLine.classList.add('text-muted', 'font-weight-bold');
-        secondLine.textContent = `${Which_Vacany.length} Vacancy Available ${Which_Vacany.length > 0 ? `(${Position})` : ''}`;
+        // secondLine.textContent = `${Which_Vacany.length} Vacancy Available ${Which_Vacany.length > 0 ? `(${Position})` : ''}`;
+        secondLine.textContent = OB;
+
 
         // Append firstLine and secondLine to textDiv
         textDiv.appendChild(firstLine);
@@ -576,10 +283,34 @@ window.onload = function () {
 
     }
 
+    const fnRefreshUI = () => {
+        OfficerContainer.innerHTML = "";
+        DepartmentContainer.innerHTML = "";
+
+        for (let r = 0; r < officer.length; r++) {
+            const Officer_Card = fnOfficerCard(officer[r]);
+            OfficerContainer.appendChild(Officer_Card);
+        }
+
+        for (let r = 0; r < department.length; r++) {
+            const Department_Card = fnDepartmentCard(department[r]);
+
+            Department_Card.addEventListener('dragover', dragOver);
+            Department_Card.addEventListener('dragenter', dragEnter);
+            Department_Card.addEventListener('dragleave', dragLeave);
+            Department_Card.addEventListener('drop', dragDrop);
+
+            OfficerContainer.addEventListener('dragover', dragOver);
+            OfficerContainer.addEventListener('dragenter', dragEnter);
+            OfficerContainer.addEventListener('dragleave', dragLeave);
+            OfficerContainer.addEventListener('drop', dragDrop);
+
+            DepartmentContainer.appendChild(Department_Card);
+        }
+    }
+
     function dragStart(event) {
-        CurrentCardObject = this;
         CurrentCard = this.cloneNode(true);
-        console.log(this)
         currentOfficerData = fnGetterAttribute('data-officer', CurrentCard);
         CurrentCard.classList.add('dragging');
     }
@@ -601,29 +332,26 @@ window.onload = function () {
 
     function dragDrop() {
         CurrentDropZone.classList.remove('dragover');
+        let updatedOfficer;
 
-        if (currentDepartmentData !== null && currentDepartmentData.isVancany === false) {
-            return;
-        }
+        officer.forEach((o, i) => {
+            if (o.Id == currentOfficerData.Id) {
+                const x = { Id: i, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
+                o.Additional_Charge.push(x);
+                updatedOfficer = o;
+            }
+        })
 
-        CurrentDropZone.querySelector('#kt_card_drop').appendChild(CurrentCard);
-
-        // Check for officer card is in Department or officer section
-        // if (currentOfficerData.isDepartmentDrop === false) {
-        //     CurrentDropZone.querySelector('#kt_card_drop').appendChild(CurrentCard);
-        //     currentOfficerData.isDepartmentDrop = true;
-        //     currentDepartmentData.Officer.push(currentOfficerData);
-        // } else {
-        //     OfficerContainer.appendChild(CurrentCard);
-        //     currentOfficerData.isDepartmentDrop = false;
-        //     const updatedOfficer = currentDepartmentData.Officer.filter(item => item.Id != currentOfficerData.Id);
-        //     currentDepartmentData.Officer = updatedOfficer;
-        // }
+        department.forEach(o => {
+            if (o.Id == currentDepartmentData.Id) {
+                o.Officer.push(updatedOfficer);
+            }
+        })
 
         CurrentCard.setAttribute('data-officer', JSON.stringify(currentOfficerData));
         CurrentDropZone.setAttribute('data-department', JSON.stringify(currentDepartmentData));
 
-        console.log(currentDepartmentData);
+        fnRefreshUI();
     }
 
     function dragEnd(event) {
@@ -634,33 +362,5 @@ window.onload = function () {
         currentDepartmentData = null;
     }
 
-    OfficerContainer.innerHTML = "";
-    DepartmentContainer.innerHTML = "";
-
-    for (let r = 0; r < officer.length; r++) {
-        // Now append the entire container to a parent element in your actual HTML document
-        // For example, assuming you have a parent container with id "itemsContainer":
-        const Officer_Card = fnOfficerCard(officer[r]);
-
-        OfficerContainer.appendChild(Officer_Card);
-    }
-
-    for (let r = 0; r < department.length; r++) {
-        // Now append the entire container to a parent element in your actual HTML document
-        // For example, assuming you have a parent container with id "itemsContainer":
-        const Department_Card = fnDepartmentCard(department[r]);
-
-        Department_Card.addEventListener('dragover', dragOver);
-        Department_Card.addEventListener('dragenter', dragEnter);
-        Department_Card.addEventListener('dragleave', dragLeave);
-        Department_Card.addEventListener('drop', dragDrop);
-
-        OfficerContainer.addEventListener('dragover', dragOver);
-        OfficerContainer.addEventListener('dragenter', dragEnter);
-        OfficerContainer.addEventListener('dragleave', dragLeave);
-        OfficerContainer.addEventListener('drop', dragDrop);
-
-
-        DepartmentContainer.appendChild(Department_Card);
-    }
+    fnRefreshUI();
 }

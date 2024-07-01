@@ -23,3 +23,11 @@
 .font-weight-800 {
     font-weight: 800;
 }
+
+.h-70vh {
+    height: 70vh !important;
+}
+
+.overflow-scroll-y {
+    overflow-y: scroll;
+}
