@@ -412,19 +412,42 @@ window.onload = function () {
         debugger;
         const { Department_Id, Officer_Id } = x
 
-        // alert("Would to like to cancel?");
-        officer.forEach(o => {
-            if (o.Id == Officer_Id) {
-                if (o.Additional_Charge && o.Additional_Charge.length > 0) {
-                    // Find the index of the object with matching Id in Additional_Charge array
-                    const indexToRemove = o.Additional_Charge.findIndex(c => c.Id === Selected_Id);
-                    if (indexToRemove !== -1) {
-                        o.Additional_Charge.splice(indexToRemove, 1);
-                        // Optionally, if you want to break the loop after removal, you can use 'break;'
-                    }
-                }
-            }
-        })
+        // Find the officer by Officer_Id
+        const officerToUpdate = officer.find(o => o.Id === Officer_Id);
+        const departmentToUpdate = department.find(o => o.Id == Department_Id);
+
+        if (!officerToUpdate) {
+            alert('Officer not found.');
+            return;
+        }
+
+        // Find the index of the Additional_Charge object to remove
+        const indexToRemove = officerToUpdate.Additional_Charge.findIndex(c => c.Id === Selected_Id);
+        const indexToRemove2 = departmentToUpdate.Officer.findIndex(c => c.Id == Officer_Id);
+        if (indexToRemove !== -1) {
+            // Remove the Additional_Charge object
+            officerToUpdate.Additional_Charge.splice(indexToRemove, 1);
+            departmentToUpdate.Officer.splice(indexToRemove2, 1)
+
+            // Refresh UI after removal
+            fnRefreshUI();
+        } else {
+            alert('Additional Charge with selected Id not found.');
+        }
+
+        // // alert("Would to like to cancel?");
+        // officer.forEach(o => {
+        //     if (o.Id == Officer_Id) {
+        //         if (o.Additional_Charge && o.Additional_Charge.length > 0) {
+        //             // Find the index of the object with matching Id in Additional_Charge array
+        //             const indexToRemove = o.Additional_Charge.findIndex(c => c.Id === Selected_Id);
+        //             if (indexToRemove !== -1) {
+        //                 o.Additional_Charge.splice(indexToRemove, 1);
+        //                 // Optionally, if you want to break the loop after removal, you can use 'break;'
+        //             }
+        //         }
+        //     }
+        // })
 
         fnRefreshUI();
     }
