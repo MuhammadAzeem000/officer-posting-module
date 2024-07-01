@@ -7,7 +7,7 @@ const officer = [{
     isPosted: true,
     isAwaiting: false,
     isAdditionalCharge: true,
-    isDepartment: true,
+    isDepartmentDrop: false,
 },
 {
     Id: 2,
@@ -18,7 +18,7 @@ const officer = [{
     isPosted: false,
     isAwaiting: true,
     isAdditionalCharge: false,
-    isDepartment: false,
+    isDepartmentDrop: false,
 }]
 
 const department = [{
@@ -31,8 +31,8 @@ const department = [{
 {
     Id: 2,
     Department_Name: 'Department 002',
-    isVancany: false,
-    Which_Vacany: [],
+    isVancany: true,
+    Which_Vacany: ['Additional_Charge 01'],
     Officer: []
 }
 ]
@@ -42,7 +42,11 @@ window.onload = function () {
     const OfficerContainer = document.querySelector('#kt_officer');
     const DepartmentContainer = document.querySelector('#kt_department');
 
-    let CurrentCard, CurrentDropZone;
+    $('#no-vacancy-ok-btn').click(() => {
+        $('#no-vacancy').modal('hide')
+    })
+
+    let CurrentCard, CurrentDropZone, currentDepartmentData, currentOfficerData;
 
     const fnOfficerCard = (o) => {
         const { Id, Officer_Name, Profile_ImgURL, isPosted, Main_Postion, Additional_Charge } = o
@@ -50,6 +54,7 @@ window.onload = function () {
         // Create parent container
         const container = document.createElement('div');
         container.setAttribute("draggable", "true");
+        container.setAttribute('data-officer', JSON.stringify(o));
         container.setAttribute('data-id', Id);
         container.classList.add('d-flex', 'align-items-center', 'mb-5', 'officer-card');
 
@@ -84,7 +89,6 @@ window.onload = function () {
         officerName.innerHTML = `<span class="text-dark text-hover-primary mb-1 font-size-lg">${Officer_Name}</span><span class="text-muted ml-2">${Main_Postion}</span>`;
 
         const postedLabel = document.createElement('span');
-        // postedLabel.classList.add('label', 'label-xl', 'label-inline', 'label-light-success');
         postedLabel.classList.add('label', 'label-xl', 'label-inline', `${isPosted ? 'label-light-success' : 'label-light-danger'}`);
 
         postedLabel.textContent = isPosted ? 'Posted' : 'Awaiting Posting';
@@ -121,6 +125,7 @@ window.onload = function () {
         // Create parent container
         const container = document.createElement('div');
         container.setAttribute('data-id', Id);
+        container.setAttribute('data-department', JSON.stringify(o));
         container.classList.add('d-flex', 'align-items-center', 'mb-5', 'department-card');
 
         // Create bullet span
@@ -187,6 +192,7 @@ window.onload = function () {
     function dragStart(event) {
         CurrentCard = this;
         CurrentCard.classList.add('dragging');
+
     }
 
     function dragOver(event) {
@@ -204,17 +210,37 @@ window.onload = function () {
     }
 
     function dragDrop() {
-        const currentDepartmentData = department.find(o => {
+        CurrentDropZone.classList.remove('dragover');
+
+        currentDepartmentData = department.find(o => {
             return CurrentDropZone.dataset.id == o.Id;
         });
 
-        if (currentDepartmentData.isVancany === false) {
-            return;
+        currentOfficerData = officer.find(o => {
+            return CurrentCard.dataset.id == o.Id;
+        });
+
+        const a = CurrentDropZone.getAttribute('data-department');
+        const departmentObj = JSON.parse(a);
+
+        // if (departmentObj.isVancany === false) {
+        //     $('#no-vacancy').modal('show');
+        //     return;
+        // }
+
+        const x = CurrentCard.getAttribute('data-officer');
+        const officerObj = JSON.parse(x);
+
+        if (officerObj.isDepartmentDrop === false) {
+            const Drop_Zone = CurrentDropZone.querySelector('#kt_card_drop');
+            Drop_Zone.appendChild(CurrentCard);
+            officerObj.isDepartmentDrop = true;
+        } else {
+            OfficerContainer.append(CurrentCard);
+            officerObj.isDepartmentDrop = false;
         }
 
-        const Drop_Zone = CurrentDropZone.querySelector('#kt_card_drop');
-        Drop_Zone.appendChild(CurrentCard);
-        CurrentDropZone.classList.remove('dragover');
+        CurrentCard.setAttribute('data-officer', JSON.stringify(officerObj));
     }
 
     function dragEnd(event) {
@@ -247,6 +273,12 @@ window.onload = function () {
         Department_Card.addEventListener('dragenter', dragEnter);
         Department_Card.addEventListener('dragleave', dragLeave);
         Department_Card.addEventListener('drop', dragDrop);
+
+        OfficerContainer.addEventListener('dragover', dragOver);
+        OfficerContainer.addEventListener('dragenter', dragEnter);
+        OfficerContainer.addEventListener('dragleave', dragLeave);
+        OfficerContainer.addEventListener('drop', dragDrop);
+
 
         DepartmentContainer.appendChild(Department_Card);
     }

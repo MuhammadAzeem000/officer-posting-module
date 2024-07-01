@@ -13,103 +13,84 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-        }
-
-        .cards-section,
-        .dropzones-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 10px;
-        }
-
-        .card,
-        .dropzone {
             background-color: #f0f0f0;
+        }
+
+        .section {
+            border: 2px dashed #aaa;
+            border-radius: 5px;
             padding: 10px;
-            margin: 5px;
+            margin: 10px;
+            width: 200px;
+            min-height: 100px;
+            background-color: #fff;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
             cursor: move;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        .dropzone {
-            min-height: 50px;
-            /* Example height */
-        }
-
-        .dragging {
-            opacity: 0.5;
-        }
-
-        .dragover {
-            background-color: #e0e0e0;
         }
     </style>
 </head>
 
 <body>
-    <div class="cards-section" id="cards-section">
-        <div class="card" draggable="true">Card 1</div>
-        <div class="card" draggable="true">Card 2</div>
-        <div class="card" draggable="true">Card 3</div>
+    <div id="section1" class="section">
+        <div class="card" draggable="true" id="card1">Card 1</div>
+        <div class="card" draggable="true" id="card2">Card 2</div>
+        <div class="card" draggable="true" id="card3">Card 3</div>
+        <div class="card" draggable="true" id="card4">Card 4</div>
+        <div class="card" draggable="true" id="card5">Card 5</div>
     </div>
 
-    <div class="dropzones-section" id="dropzones-section">
-        <div class="dropzone">Drop Zone 1</div>
-        <div class="dropzone">Drop Zone 2</div>
-        <div class="dropzone">Drop Zone 3</div>
+    <div id="section2" class="section">
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cardsSection = document.getElementById('cards-section');
-            const dropzones = document.querySelectorAll('.dropzone');
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+            let draggedCard = null;
 
-            // Add event listeners for drag start and drag end to cards
-            cardsSection.addEventListener('dragstart', dragStart);
-            cardsSection.addEventListener('dragend', dragEnd);
+            cards.forEach(card => {
+                card.addEventListener('dragstart', function () {
+                    draggedCard = this;
+                    setTimeout(() => {
+                        this.style.opacity = '0.5'; // Change opacity to indicate drag
+                    }, 0);
+                });
 
-            // Add event listeners for dragover, dragenter, dragleave, and drop to dropzones
-            dropzones.forEach(dropzone => {
-                dropzone.addEventListener('dragover', dragOver);
-                dropzone.addEventListener('dragenter', dragEnter);
-                dropzone.addEventListener('dragleave', dragLeave);
-                dropzone.addEventListener('drop', drop);
+                card.addEventListener('dragend', function () {
+                    setTimeout(() => {
+                        this.style.opacity = ''; // Reset opacity after drag
+                        draggedCard = null;
+                    }, 0);
+                });
             });
 
-            // Drag functions
-            function dragStart(event) {
-                event.target.classList.add('dragging');
-            }
+            const sections = document.querySelectorAll('.section');
 
-            function dragEnd(event) {
-                event.target.classList.remove('dragging');
-            }
+            sections.forEach(section => {
+                section.addEventListener('dragover', function (e) {
+                    e.preventDefault(); // Allow drop
+                    this.classList.add('hovered'); // Add visual feedback on dragover
+                });
 
-            // Drop zone functions
-            function dragOver(event) {
-                event.preventDefault();
-            }
+                section.addEventListener('dragleave', function () {
+                    this.classList.remove('hovered'); // Remove visual feedback on dragleave
+                });
 
-            function dragEnter(event) {
-                event.preventDefault();
-                this.classList.add('dragover');
-            }
-
-            function dragLeave() {
-                this.classList.remove('dragover');
-            }
-
-            function drop(event) {
-                const draggable = document.querySelector('.dragging');
-                this.appendChild(draggable);
-                this.classList.remove('dragover');
-            }
+                section.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.classList.remove('hovered'); // Remove visual feedback on drop
+                    if (draggedCard) {
+                        this.appendChild(draggedCard); // Append dragged card to target section
+                    }
+                });
+            });
         });
+
     </script>
 </body>
 
