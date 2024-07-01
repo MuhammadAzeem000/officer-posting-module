@@ -1,6 +1,7 @@
 const officer = [
     {
         Id: 628,
+        Department_Id: null,
         Officer_Name: 'Zahid Ali Abbasi',
         Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
         Main_Position: 'Secretary',
@@ -14,6 +15,7 @@ const officer = [
     },
     {
         Id: 635,
+        Department_Id: null,
         Officer_Name: 'Waseem Shamshad Ali',
         Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
         Main_Position: 'Secretary',
@@ -87,10 +89,11 @@ window.onload = function () {
 
     const fnPositionLabel = (o) => {
         debugger;
-        const { Department_Name, Main_Position, isCancel } = o;
+        const { Id, Department_Name, Main_Position, isCancel } = o;
 
         // Create label div
         const labelDiv = document.createElement('div');
+        labelDiv.setAttribute('data-id', Id);
         labelDiv.classList.add('label', 'label-xl', 'label-inline', 'label-light-success', 'mb-2', 'justify-content-between', 'h-auto', 'w-100');
 
         const titleDiv = document.createElement('div');
@@ -115,32 +118,38 @@ window.onload = function () {
             const button = document.createElement('button');
             button.classList.add('btn', 'btn-light-danger', 'btn-sm', 'ml-2');
             button.textContent = 'Cancel'
-            button.addEventListener('click', fnCancelPosition);
+            button.addEventListener('click', () => {
+                fnCancelPosition(o, Id)
+            });
             labelDiv.appendChild(button);
         }
 
         return labelDiv;
     }
 
-    const fnCancelPosition = () => {
-        alert("Would to like to cancel?");
+    const fnCancelPosition = (x, Selected_Id) => {
+        debugger;
+        const { Department_Id, Officer_Id } = x
+
+        // alert("Would to like to cancel?");
         officer.forEach(o => {
-            if (o.Id == currentOfficerData.Id) {
-                const x = { Id: 1, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
-                o.Additional_Charge.push(x);
-                updatedOfficer = o;
+            if (o.Id == Officer_Id) {
+                if (o.Additional_Charge && o.Additional_Charge.length > 0) {
+                    // Find the index of the object with matching Id in Additional_Charge array
+                    const indexToRemove = o.Additional_Charge.findIndex(c => c.Id === Selected_Id);
+                    if (indexToRemove !== -1) {
+                        o.Additional_Charge.splice(indexToRemove, 1);
+                        // Optionally, if you want to break the loop after removal, you can use 'break;'
+                    }
+                }
             }
         })
 
-        department.forEach(o => {
-            if (o.Id == currentDepartmentData.Id) {
-                o.Officer.push(updatedOfficer);
-            }
-        })
+        fnRefreshUI();
     }
 
     const fnOfficerCard = (o) => {
-        const { Id, Officer_Name, Profile_ImgURL, isPosted, Main_Position, Department_Name, Additional_Charge } = o
+        const { Id, Officer_Name, Profile_ImgURL, Additional_Charge } = o
 
         // Create main div element
         const mainDiv = document.createElement('div');
@@ -159,7 +168,7 @@ window.onload = function () {
 
         // Create img inside span
         const img = document.createElement('img');
-        img.setAttribute('src', 'assets/media/svg/avatars/009-boy-4.svg');
+        img.setAttribute('src', Profile_ImgURL);
         img.classList.add('h-75', 'align-self-end');
         img.setAttribute('alt', '');
 
@@ -331,12 +340,13 @@ window.onload = function () {
     }
 
     function dragDrop() {
+        debugger;
         CurrentDropZone.classList.remove('dragover');
         let updatedOfficer;
 
         officer.forEach((o, i) => {
             if (o.Id == currentOfficerData.Id) {
-                const x = { Id: i, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
+                const x = { Department_Id: currentDepartmentData.Id, Officer_Id: currentOfficerData.Id, Id: i, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
                 o.Additional_Charge.push(x);
                 updatedOfficer = o;
             }
