@@ -17,5 +17,9 @@
 }
 
 .dragover {
-    background-color: #e0e0e0;
+    background-color: #f7f7f7;
+}
+
+.font-weight-800 {
+    font-weight: 800;
 }
