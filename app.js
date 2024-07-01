@@ -1,8 +1,7 @@
 const officer = [
     {
         Id: 628,
-        Department_Id: null,
-        Officer_Name: 'Zahid Ali Abbasi',
+        Officer_Name: 'Zahid Ali Abbasi ( PAS) BS-21',
         Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
         Main_Position: 'Secretary',
         Department_Name: 'School Education & Literacy Department',
@@ -15,8 +14,7 @@ const officer = [
     },
     {
         Id: 635,
-        Department_Id: null,
-        Officer_Name: 'Waseem Shamshad Ali',
+        Officer_Name: 'Waseem Shamshad Ali ( PAS) BS-21',
         Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
         Main_Position: 'Secretary',
         Department_Name: 'Rehabilitation Department',
@@ -27,6 +25,282 @@ const officer = [
         isAdditionalCharge: true,
         isDepartmentDrop: false,
     },
+
+    {
+        Id: 632,
+        Officer_Name: 'Rafique Ahmed Buriro ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        Department_Name: 'Agriculture Supply & Prices Department',
+        isCancel: false,
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 630,
+        Officer_Name: 'Najam Ahmed Shah ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Chairman / Chairperson (BS-22/21)',
+        isCancel: false,
+        Department_Name: 'Planning & Development Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 699,
+        Officer_Name: 'Musaddiq Ahmed Khan',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        isCancel: false,
+        Department_Name: 'Energy Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 1004,
+        Officer_Name: 'Muhammad Iqbal Memon',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Additional Chief Secretary',
+        isCancel: false,
+        Department_Name: 'Home Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1537,
+        Officer_Name: 'Mr.Shakeel Ahmed Mangnejo',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Chairman',
+        isCancel: false,
+        Department_Name: 'Chief Minister Inspection, Enquiries & Implementation Team',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1574,
+        Officer_Name: 'Mr.Manzoor Ali Shaikh',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Awaiting Posting',
+        isCancel: false,
+        Department_Name: 'Services, General Administration & Coordination Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 631,
+        Officer_Name: 'Khalid Hyder Shah ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Additional Chief Secretary (BS-21)',
+        isCancel: false,
+        Department_Name: 'Local Government & HTP',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1047,
+        Officer_Name: 'Kazim Hussain Jatoi ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        isCancel: false,
+        Department_Name: 'Livestock & Fisheries Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 1582,
+        Officer_Name: 'Akram Ali Khowaja ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Awaiting Posting',
+        isCancel: false,
+        Department_Name: 'Services, General Administration & Coordination Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 1475,
+        Officer_Name: 'Agha Wasif Abbas ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Principal Secretary',
+        isCancel: false,
+        Department_Name: 'Chief Minister Secretariat',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 633,
+        Officer_Name: 'Abdul Waheed Shaikh ( PAS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Awaiting Posting',
+        isCancel: false,
+        Department_Name: 'Services, General Administration &Coordination Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 652,
+        Officer_Name: 'Saeed Ahmed Awan ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        isCancel: false,
+        Department_Name: 'Training, Management & Research Wing,SGA&CD',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 654,
+        Officer_Name: 'Iqbal Ahmed Soomro ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Member (Judicial)',
+        isCancel: false,
+        Department_Name: 'Board of Revenue Sindh',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+    {
+        Id: 649,
+        Officer_Name: 'Imtiaz Ali Shah ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Managing Director',
+        isCancel: false,
+        Department_Name: 'Sindh Solid Waste Management Board(SSWMB)',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 955,
+        Officer_Name: 'Ghulam Mustafa Phul ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Commissioner, Larkana Division',
+        isCancel: false,
+        Department_Name: 'Board of Revenue Sindh',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1344,
+        Officer_Name: 'Danish Saeed ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Member (Judicial-III)',
+        isCancel: false,
+        Department_Name: 'Board of Revenue Sindh',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 643,
+        Officer_Name: 'Baqaullah Unnar ( Ex-PCS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Senior Member, Board of Revenue',
+        isCancel: false,
+        Department_Name: 'Board of Revenue Sindh',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 742,
+        Officer_Name: 'Dr. Shereen Mustafa ( PSS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Awaiting Posting',
+        isCancel: false,
+        Department_Name: 'Services, General Administration &Coordination Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 730,
+        Officer_Name: 'Dr. Badar Jamil Mendhro ( PSS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        isCancel: false,
+        Department_Name: 'Forest & Wildlife Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 738,
+        Officer_Name: 'ABDUL RASHEED SOLANGI ( PSS) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Director General',
+        isCancel: false,
+        Department_Name: 'Sindh Building Control Authority',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1447,
+        Officer_Name: 'Mr. Muhammad Yaseen Shar Baloch (Secretariat Group) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Secretary',
+        isCancel: false,
+        Department_Name: 'Industries & Commerce Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    }, {
+        Id: 1596,
+        Officer_Name: 'Farhat Ali Junejo ( PSP) BS-21',
+        Profile_ImgURL: 'assets/media/svg/avatars/009-boy-4.svg',
+        Main_Position: 'Awaiting Posting',
+        isCancel: false,
+        Department_Name: 'Services, General Administration & Coordination Department',
+        Additional_Charge: [],
+        isPosted: true,
+        isAwaiting: false,
+        isAdditionalCharge: true,
+        isDepartmentDrop: false,
+    },
+
 ]
 
 const department = [{
@@ -70,6 +344,13 @@ const department = [{
     Officer: []
 }
 ]
+
+const modalState = {
+    DUPLICATE_ENTRY: {
+        title: "Duplicate Entry",
+        text: "",
+    }
+}
 
 window.onload = function () {
     debugger;
@@ -339,7 +620,7 @@ window.onload = function () {
         CurrentDropZone.classList.remove('dragover');
     }
 
-    function dragDrop() {
+    function dragDropOld() {
         debugger;
         CurrentDropZone.classList.remove('dragover');
         let updatedOfficer;
@@ -363,6 +644,65 @@ window.onload = function () {
 
         fnRefreshUI();
     }
+
+    function dragDrop() {
+        debugger;
+        CurrentDropZone.classList.remove('dragover');
+
+        // Find the index of the current officer in the officer array
+        const officerIndex = officer.findIndex(o => o.Id === currentOfficerData.Id);
+        if (officerIndex === -1) {
+            alert('Officer not found.');
+            return;
+        }
+
+        // Check if the Additional Charge already exists for the current department
+        const existingAdditionalChargeIndex = officer[officerIndex].Additional_Charge.findIndex(ac => ac.Department_Id === currentDepartmentData.Id);
+        if (existingAdditionalChargeIndex !== -1) {
+            // Handle duplicate Additional Charge entry
+            alert('Additional Charge already exists for this department.');
+            return;
+        }
+
+        // Create the new Additional Charge object
+        const additionalCharge = {
+            Department_Id: currentDepartmentData.Id,
+            Officer_Id: currentOfficerData.Id,
+            Id: officer[officerIndex].Additional_Charge.length, // Assuming Id should be based on the length of Additional_Charge array
+            Department_Name: currentDepartmentData.Department_Name,
+            Main_Position: currentDepartmentData.Main_Position,
+            isCancel: true
+        };
+
+        // Update the officer's Additional_Charge array
+        officer[officerIndex].Additional_Charge.push(additionalCharge);
+
+        // Find the department in the department array to update
+        const departmentToUpdate = department.find(d => d.Id === currentDepartmentData.Id);
+        if (departmentToUpdate) {
+            // Check for duplicate officer in the department's Officer array
+            const duplicateIndex = departmentToUpdate.Officer.findIndex(o => o.Id === currentOfficerData.Id);
+            if (duplicateIndex !== -1) {
+                // Remove duplicate officer
+                departmentToUpdate.Officer.splice(duplicateIndex, 1);
+            }
+
+            // Push updated officer to department's Officer array
+            departmentToUpdate.Officer.push(officer[officerIndex]);
+
+            // Update UI attributes
+            CurrentCard.setAttribute('data-officer', JSON.stringify(currentOfficerData));
+            CurrentDropZone.setAttribute('data-department', JSON.stringify(currentDepartmentData));
+
+            // Refresh UI after all updates are done
+            fnRefreshUI();
+        } else {
+            alert('Department not found.');
+        }
+
+        console.log("Department", department)
+    }
+
 
     function dragEnd(event) {
         CurrentCard.classList.remove('dragging');
