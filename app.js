@@ -331,7 +331,7 @@ const department = [{
     Id: 4,
     Department_Name: 'Finance Department',
     Main_Position: 'Secretary',
-    isVancany: false,
+    isVancany: true,
     Occupied_By: '',
     Officer: []
 },
