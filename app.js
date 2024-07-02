@@ -357,9 +357,21 @@ window.onload = function () {
     const OfficerContainer = document.querySelector('#kt_officer');
     const DepartmentContainer = document.querySelector('#kt_department');
 
-    $('#no-vacancy-ok-btn').click(() => {
-        $('#no-vacancy').modal('hide')
-    })
+    const fnModalError = (o) => {
+        const { Modal_Id, Officer_Name } = o;
+
+        const modalDiv = document.querySelector('#ShowModal');
+        const modalBody = modalDiv.querySelector('#ModalText');
+        const ModalOKBtn = modalDiv.querySelector('#ModalOKBtn');
+        const ModalCancelBtn = modalDiv.querySelector('#ModalCancelBtn');
+
+        modalBody.innerHTML = "";
+        if (Modal_Id === 1) {
+            modalBody.textContent = `Department is occupied by ${Officer_Name}. Transfer them?`;
+        }
+
+        $(modalDiv).modal('show');
+    }
 
     let CurrentCard, CurrentDropZone, currentDepartmentData, currentOfficerData;
 
@@ -416,40 +428,27 @@ window.onload = function () {
         const officerToUpdate = officer.find(o => o.Id === Officer_Id);
         const departmentToUpdate = department.find(o => o.Id == Department_Id);
 
-        if (!officerToUpdate) {
-            alert('Officer not found.');
+        if (!officerToUpdate || !departmentToUpdate) {
+            alert('Officer or Department not found.');
             return;
         }
 
-        // Find the index of the Additional_Charge object to remove
+        // Remove the additional charge
         const indexToRemove = officerToUpdate.Additional_Charge.findIndex(c => c.Id === Selected_Id);
-        const indexToRemove2 = departmentToUpdate.Officer.findIndex(c => c.Id == Officer_Id);
         if (indexToRemove !== -1) {
-            // Remove the Additional_Charge object
             officerToUpdate.Additional_Charge.splice(indexToRemove, 1);
-            departmentToUpdate.Officer.splice(indexToRemove2, 1)
+
+            // Remove officer from department's Officer array
+            const officerIndexInDepartment = departmentToUpdate.Officer.findIndex(o => o.Id === Officer_Id);
+            if (officerIndexInDepartment !== -1) {
+                departmentToUpdate.Officer.splice(officerIndexInDepartment, 1);
+            }
 
             // Refresh UI after removal
             fnRefreshUI();
         } else {
             alert('Additional Charge with selected Id not found.');
         }
-
-        // // alert("Would to like to cancel?");
-        // officer.forEach(o => {
-        //     if (o.Id == Officer_Id) {
-        //         if (o.Additional_Charge && o.Additional_Charge.length > 0) {
-        //             // Find the index of the object with matching Id in Additional_Charge array
-        //             const indexToRemove = o.Additional_Charge.findIndex(c => c.Id === Selected_Id);
-        //             if (indexToRemove !== -1) {
-        //                 o.Additional_Charge.splice(indexToRemove, 1);
-        //                 // Optionally, if you want to break the loop after removal, you can use 'break;'
-        //             }
-        //         }
-        //     }
-        // })
-
-        fnRefreshUI();
     }
 
     const fnOfficerCard = (o) => {
@@ -600,26 +599,21 @@ window.onload = function () {
         OfficerContainer.innerHTML = "";
         DepartmentContainer.innerHTML = "";
 
-        for (let r = 0; r < officer.length; r++) {
-            const Officer_Card = fnOfficerCard(officer[r]);
+        officer.forEach(o => {
+            const Officer_Card = fnOfficerCard(o);
             OfficerContainer.appendChild(Officer_Card);
-        }
+        });
 
-        for (let r = 0; r < department.length; r++) {
-            const Department_Card = fnDepartmentCard(department[r]);
+        department.forEach(d => {
+            const Department_Card = fnDepartmentCard(d);
 
             Department_Card.addEventListener('dragover', dragOver);
             Department_Card.addEventListener('dragenter', dragEnter);
             Department_Card.addEventListener('dragleave', dragLeave);
             Department_Card.addEventListener('drop', dragDrop);
 
-            OfficerContainer.addEventListener('dragover', dragOver);
-            OfficerContainer.addEventListener('dragenter', dragEnter);
-            OfficerContainer.addEventListener('dragleave', dragLeave);
-            OfficerContainer.addEventListener('drop', dragDrop);
-
             DepartmentContainer.appendChild(Department_Card);
-        }
+        });
     }
 
     function dragStart(event) {
@@ -643,31 +637,6 @@ window.onload = function () {
         CurrentDropZone.classList.remove('dragover');
     }
 
-    function dragDropOld() {
-        debugger;
-        CurrentDropZone.classList.remove('dragover');
-        let updatedOfficer;
-
-        officer.forEach((o, i) => {
-            if (o.Id == currentOfficerData.Id) {
-                const x = { Department_Id: currentDepartmentData.Id, Officer_Id: currentOfficerData.Id, Id: i, Department_Name: currentDepartmentData.Department_Name, Main_Position: currentDepartmentData.Main_Position, isCancel: true }
-                o.Additional_Charge.push(x);
-                updatedOfficer = o;
-            }
-        })
-
-        department.forEach(o => {
-            if (o.Id == currentDepartmentData.Id) {
-                o.Officer.push(updatedOfficer);
-            }
-        })
-
-        CurrentCard.setAttribute('data-officer', JSON.stringify(currentOfficerData));
-        CurrentDropZone.setAttribute('data-department', JSON.stringify(currentDepartmentData));
-
-        fnRefreshUI();
-    }
-
     function dragDrop() {
         debugger;
         CurrentDropZone.classList.remove('dragover');
@@ -683,7 +652,9 @@ window.onload = function () {
         const existingAdditionalChargeIndex = officer[officerIndex].Additional_Charge.findIndex(ac => ac.Department_Id === currentDepartmentData.Id);
         if (existingAdditionalChargeIndex !== -1) {
             // Handle duplicate Additional Charge entry
-            alert('Additional Charge already exists for this department.');
+            // fnCancelPosition(officer[officerIndex].Additional_Charge[existingAdditionalChargeIndex], officer[officerIndex].Additional_Charge[existingAdditionalChargeIndex].Id)
+            // fnModalError({ Modal_Id: 1, Officer_Name: officer[officerIndex].Officer_Name });
+            alert("Additional Charge already exists for this department.")
             return;
         }
 
@@ -713,17 +684,11 @@ window.onload = function () {
             // Push updated officer to department's Officer array
             departmentToUpdate.Officer.push(officer[officerIndex]);
 
-            // Update UI attributes
-            CurrentCard.setAttribute('data-officer', JSON.stringify(currentOfficerData));
-            CurrentDropZone.setAttribute('data-department', JSON.stringify(currentDepartmentData));
-
             // Refresh UI after all updates are done
             fnRefreshUI();
         } else {
             alert('Department not found.');
         }
-
-        console.log("Department", department)
     }
 
 
