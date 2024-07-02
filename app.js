@@ -734,7 +734,7 @@ window.onload = function () {
 
         // officer [have post, one or multiple], department vacant [no officer posted] =>
         // "Main charge or additional?", button main and additional, post accordingly, no more validation,
-        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length > 0) && departmentToUpdate.Officer.length === 0) {
+        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length === 0) && departmentToUpdate.Officer.length === 0) {
             const modalText = `Main charge or additional?`;
             fnMultipleActionModal(modalText,
                 () => {
@@ -768,7 +768,7 @@ window.onload = function () {
         // officer [have post, one or multiple], department occupied[officer posted] => 
         // "Replace current official?" if yes => "Main charge or additional?", 
         // button main and additional, post accordingly, no more validation, the previous officer removed from this department in both panes
-        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length > 0) && departmentToUpdate.Officer.length > 0) {
+        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length === 0) && departmentToUpdate.Officer.length > 0) {
             const modalText = `Replace current official?`;
             fnMultipleActionModal(modalText,
                 () => {
