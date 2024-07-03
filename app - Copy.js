@@ -698,10 +698,44 @@ window.onload = function () {
             return;
         }
 
-        //Officer[Posted] => Department[Vacant]
-        if (officer[officerIndex].isPosted && departmentToUpdate.Officer.length === 0) {
-            const modalText = `Do you  want to add ${officer[officerIndex].Officer_Name} Main charge or additional to the ${departmentToUpdate.Department_Name}?`;
-            //
+        //check officer awaiting posting[no charge], department vacant [no officer posted] => no more validation, post as main
+        if (officer[officerIndex].isAwaiting && departmentToUpdate.Officer.length === 0) {
+            const modalText = `Do you want to post ${officer[officerIndex].Officer_Name} to the ${departmentToUpdate.Department_Name}?`;
+            fnShowModal(modalText, () => {
+                officer[officerIndex].isAwaiting = false;
+                officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
+                // Replace with the new officer
+                departmentToUpdate.Officer = [officer[officerIndex]];
+                fnRefreshUI();
+            });
+            return;
+        }
+
+        //Check officer awaiting posting[no charge], department occupied[officer posted] => 
+        // "Replace current official?" if yes, no more validation, post as main, previous officer removed from this department in both panes
+        if (officer[officerIndex].isAwaiting && departmentToUpdate.Officer.length > 0) {
+            const modalText = `Do you want to replace ${officer[officerIndex].Officer_Name} with ${departmentToUpdate.Officer[0].Officer_Name}?`;
+
+            // Find the index of the replacing officer in the officer array
+            const replacingOfficerIndex = officer.findIndex(o => o.Id === departmentToUpdate.Officer[0].Id);
+
+            fnShowModal(modalText, () => {
+                officer[officerIndex].isAwaiting = false;
+                officer[officerIndex].Main_Position = departmentToUpdate.Officer[0].Main_Position
+                departmentToUpdate.Officer = [officer[officerIndex]];
+
+                officer[replacingOfficerIndex].isAwaiting = true;
+                officer[replacingOfficerIndex].Main_Position = 'Awaiting Posting'
+                // Replace with the new officer
+                fnRefreshUI();
+            });
+            return;
+        }
+
+        // officer [have post, one or multiple], department vacant [no officer posted] =>
+        // "Main charge or additional?", button main and additional, post accordingly, no more validation,
+        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length === 0) && departmentToUpdate.Officer.length === 0) {
+            const modalText = `Main charge or additional?`;
             fnMultipleActionModal(modalText,
                 () => {
                     // Replace the original post object
@@ -712,7 +746,7 @@ window.onload = function () {
                     fnRefreshUI();
                 },
                 () => {
-                    // Create the Additional Charge object
+                    // Create the new Additional Charge object
                     const additionalCharge = {
                         Department_Id: departmentToUpdate.Id,
                         Officer_Id: officer[officerIndex].Id,
@@ -731,60 +765,22 @@ window.onload = function () {
             return;
         }
 
-        //Officer[Posted] => Department[Occupied]
-        if (officer[officerIndex].isPosted && departmentToUpdate.Officer.length > 0) {
-            const modalText = `Officer already exist do you  want to add ${officer[officerIndex].Officer_Name} Main charge to the ${departmentToUpdate.Department_Name}?`;
-            fnShowModal(modalText, () => {
-                //exisiting officer
-                exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
-                exisitingOfficer.Main_Position = 'Awaiting Posting';
-                exisitingOfficer.isPosted = false;
-                exisitingOfficer.isAwaiting = true;
-
-
-                // Replace the original post object
-                officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
-                officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
-                departmentToUpdate.Officer = [officer[officerIndex]];
-
-                fnRefreshUI();
-            });
-
-            return;
-        }
-
-        //Officer[Awaited] => Department[Vacant]
-        if (officer[officerIndex].isAwaiting && departmentToUpdate.Officer.length === 0) {
-            const modalText = `Do you  want to add ${officer[officerIndex].Officer_Name} Main charge to the ${departmentToUpdate.Department_Name}?`;
-            fnShowModal(modalText, () => {
-                officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
-                officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
-                officer[officerIndex].isPosted = true;
-                officer[officerIndex].isAwaiting = false
-                departmentToUpdate.Officer = [officer[officerIndex]];
-
-                fnRefreshUI();
-            });
-
-            return;
-        }
-
-        //Officer[Awaited] => Department[Occupied]
-        if (officer[officerIndex].isAwaiting && departmentToUpdate.Officer.length > 0) {
-            const modalText = `Officer already exist do you  want to add ${officer[officerIndex].Officer_Name} main or additional charge to the ${departmentToUpdate.Department_Name}?`;
+        // officer [have post, one or multiple], department occupied[officer posted] => 
+        // "Replace current official?" if yes => "Main charge or additional?", 
+        // button main and additional, post accordingly, no more validation, the previous officer removed from this department in both panes
+        if ((officer[officerIndex].isPosted && officer[officerIndex].Additional_Charge.length === 0) && departmentToUpdate.Officer.length > 0) {
+            const modalText = `Replace current official?`;
             fnMultipleActionModal(modalText,
                 () => {
                     // Replace the original post object
                     officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
                     officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
-                    officer[officerIndex].isPosted = true;
-                    officer[officerIndex].isAwaiting = false;
                     departmentToUpdate.Officer = [officer[officerIndex]];
 
                     fnRefreshUI();
                 },
                 () => {
-                    // Create the Additional Charge object
+                    // Create the new Additional Charge object
                     const additionalCharge = {
                         Department_Id: departmentToUpdate.Id,
                         Officer_Id: officer[officerIndex].Id,
@@ -796,11 +792,94 @@ window.onload = function () {
 
                     // Update the officer's Additional_Charge array
                     officer[officerIndex].Additional_Charge.push(additionalCharge);
-                    departmentToUpdate.Officer.push([officer[officerIndex]])
+                    departmentToUpdate.Officer = [officer[officerIndex]]
 
                     fnRefreshUI();
                 });
             return;
+        }
+
+        // Check if the Additional Charge already exists for the current department
+        const existingAdditionalChargeIndex = officer[officerIndex].Additional_Charge.findIndex(ac => ac.Department_Id === currentDepartmentData.Id);
+        if (existingAdditionalChargeIndex !== -1) {
+            debugger
+            // Display modal for duplicate entry
+            const modalText = `Duplicate officer entry found in department ${currentDepartmentData.Department_Name}. Do you want to cancel the existing entry?`;
+            fnShowModal(modalText, () => {
+                // Remove the existing Additional Charge entry
+                fnCancelPosition(officer[officerIndex].Additional_Charge[existingAdditionalChargeIndex], officer[officerIndex].Additional_Charge[existingAdditionalChargeIndex].Id);
+            });
+            return;
+        }
+
+        // Check if the officer is already assigned to any department
+        const officerDepartments = officer.reduce((departments, o) => {
+            o.Additional_Charge.forEach(ac => {
+                if (ac.Officer_Id === currentOfficerData.Id) {
+                    departments.push(ac.Department_Name);
+                }
+            });
+            return departments;
+        }, []);
+
+        if (officerDepartments.includes(currentDepartmentData.Department_Name)) {
+            debugger;
+            // Display modal for additional charge
+            const modalText = `Officer ${currentOfficerData.Name} is already assigned to another department. Do you want to add an additional charge for department ${currentDepartmentData.Department_Name}?`;
+            fnShowModal(modalText, () => {
+                // Add the additional charge for the new department
+                addAdditionalCharge();
+            });
+        } else {
+            // Add the additional charge for the new department directly
+            addAdditionalCharge();
+        }
+
+        function addAdditionalCharge() {
+            // Create the new Additional Charge object
+            const additionalCharge = {
+                Department_Id: currentDepartmentData.Id,
+                Officer_Id: currentOfficerData.Id,
+                Id: officer[officerIndex].Additional_Charge.length, // Assuming Id should be based on the length of Additional_Charge array
+                Department_Name: currentDepartmentData.Department_Name,
+                Main_Position: currentDepartmentData.Main_Position,
+                isCancel: true
+            };
+
+            // Update the officer's Additional_Charge array
+            officer[officerIndex].Additional_Charge.push(additionalCharge);
+
+            // Check if the department already has an officer dropped
+            if (departmentToUpdate.Officer.length > 0) {
+                debugger
+                let modalText;
+
+                if (officer[officerIndex].Id == departmentToUpdate.Officer[0].Id) {
+                    modalText = `${officer[officerIndex].Officer_Name} is already appointed to the same`;
+                } else {
+                    modalText = `Department ${currentDepartmentData.Department_Name} already has an officer. Do you want to replace?`;
+                }
+                // Display modal for replacing existing officer
+                fnShowModal(modalText, () => {
+                    // Remove the existing officer from the department
+                    const existingOfficerId = departmentToUpdate.Officer[0].Id;
+                    const existingOfficerIndex = officer.findIndex(o => o.Id === existingOfficerId);
+                    if (existingOfficerIndex !== -1) {
+                        officer[existingOfficerIndex].Additional_Charge = officer[existingOfficerIndex].Additional_Charge.filter(ac => ac.Department_Id !== currentDepartmentData.Id);
+                    }
+                    // Replace with the new officer
+                    departmentToUpdate.Officer = [officer[officerIndex]];
+
+                    // Refresh UI after all updates are done
+                    fnRefreshUI();
+                });
+            } else {
+                // No officer in the department, directly add the officer
+                departmentToUpdate.Officer.push(officer[officerIndex]);
+
+                // Refresh UI after all updates are done
+                fnRefreshUI();
+            }
         }
     }
 
