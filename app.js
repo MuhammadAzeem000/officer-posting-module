@@ -774,6 +774,12 @@ window.onload = function () {
             const modalText = `Officer already exist do you  want to add ${officer[officerIndex].Officer_Name} main or additional charge to the ${departmentToUpdate.Department_Name}?`;
             fnMultipleActionModal(modalText,
                 () => {
+                    //exisiting officer
+                    exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
+                    exisitingOfficer.Main_Position = 'Awaiting Posting';
+                    exisitingOfficer.isPosted = false;
+                    exisitingOfficer.isAwaiting = true;
+
                     // Replace the original post object
                     officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
                     officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
@@ -796,7 +802,7 @@ window.onload = function () {
 
                     // Update the officer's Additional_Charge array
                     officer[officerIndex].Additional_Charge.push(additionalCharge);
-                    departmentToUpdate.Officer.push([officer[officerIndex]])
+                    departmentToUpdate.Officer.push(officer[officerIndex])
 
                     fnRefreshUI();
                 });
