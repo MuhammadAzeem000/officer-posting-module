@@ -701,7 +701,7 @@ window.onload = function () {
         //Officer[Posted] => Department[Vacant]
         if (officer[officerIndex].isPosted && departmentToUpdate.Officer.length === 0) {
             const modalText = `Do you  want to add ${officer[officerIndex].Officer_Name} Main charge or additional to the ${departmentToUpdate.Department_Name}?`;
-            //
+
             fnMultipleActionModal(modalText,
                 () => {
                     // Replace the original post object
@@ -733,22 +733,45 @@ window.onload = function () {
 
         //Officer[Posted] => Department[Occupied]
         if (officer[officerIndex].isPosted && departmentToUpdate.Officer.length > 0) {
-            const modalText = `Officer already exist do you  want to add ${officer[officerIndex].Officer_Name} Main charge to the ${departmentToUpdate.Department_Name}?`;
+            let modalText = `Do you want to replace ${departmentToUpdate.Officer[0].Officer_Name}?`;
+
             fnShowModal(modalText, () => {
-                //exisiting officer
-                exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
-                exisitingOfficer.Main_Position = 'Awaiting Posting';
-                exisitingOfficer.isPosted = false;
-                exisitingOfficer.isAwaiting = true;
+                modalText = `Do you  want to add ${officer[officerIndex].Officer_Name} Main charge to the ${departmentToUpdate.Department_Name}?`;
+                fnMultipleActionModal(modalText,
+                    () => {
+                        //Occpuied officer gone into Awaited
+                        exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
+                        exisitingOfficer.Main_Position = 'Awaiting Posting';
+                        exisitingOfficer.isPosted = false;
+                        exisitingOfficer.isAwaiting = true;
 
 
-                // Replace the original post object
-                officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
-                officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
-                departmentToUpdate.Officer = [officer[officerIndex]];
+                        // Post officer main position change
+                        officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
+                        officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
+                        departmentToUpdate.Officer = [officer[officerIndex]];
 
-                fnRefreshUI();
+                        fnRefreshUI();
+                    },
+                    () => {
+                        // Create the Additional Charge object
+                        const additionalCharge = {
+                            Department_Id: departmentToUpdate.Id,
+                            Officer_Id: officer[officerIndex].Id,
+                            Id: officer[officerIndex].Additional_Charge.length, // Assuming Id should be based on the length of Additional_Charge array
+                            Department_Name: departmentToUpdate.Department_Name,
+                            Main_Position: departmentToUpdate.Main_Position,
+                            isCancel: true
+                        };
+
+                        // Update the officer's Additional_Charge array
+                        officer[officerIndex].Additional_Charge.push(additionalCharge);
+                        departmentToUpdate.Officer.push(officer[officerIndex])
+
+                        fnRefreshUI();
+                    });
             });
+
 
             return;
         }
@@ -771,41 +794,25 @@ window.onload = function () {
 
         //Officer[Awaited] => Department[Occupied]
         if (officer[officerIndex].isAwaiting && departmentToUpdate.Officer.length > 0) {
-            const modalText = `Officer already exist do you  want to add ${officer[officerIndex].Officer_Name} main or additional charge to the ${departmentToUpdate.Department_Name}?`;
-            fnMultipleActionModal(modalText,
-                () => {
-                    //exisiting officer
-                    exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
-                    exisitingOfficer.Main_Position = 'Awaiting Posting';
-                    exisitingOfficer.isPosted = false;
-                    exisitingOfficer.isAwaiting = true;
+            let modalText = `Do you want to replace ${departmentToUpdate.Officer[0].Officer_Name}?`;
 
-                    // Replace the original post object
-                    officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
-                    officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
-                    officer[officerIndex].isPosted = true;
-                    officer[officerIndex].isAwaiting = false;
-                    departmentToUpdate.Officer = [officer[officerIndex]];
+            fnShowModal(modalText, () => {
+                //exisiting officer
+                exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
+                exisitingOfficer.Main_Position = 'Awaiting Posting';
+                exisitingOfficer.isPosted = false;
+                exisitingOfficer.isAwaiting = true;
 
-                    fnRefreshUI();
-                },
-                () => {
-                    // Create the Additional Charge object
-                    const additionalCharge = {
-                        Department_Id: departmentToUpdate.Id,
-                        Officer_Id: officer[officerIndex].Id,
-                        Id: officer[officerIndex].Additional_Charge.length, // Assuming Id should be based on the length of Additional_Charge array
-                        Department_Name: departmentToUpdate.Department_Name,
-                        Main_Position: departmentToUpdate.Main_Position,
-                        isCancel: true
-                    };
+                // Replace the original post object
+                officer[officerIndex].Department_Name = departmentToUpdate.Department_Name
+                officer[officerIndex].Main_Position = departmentToUpdate.Main_Position
+                officer[officerIndex].isPosted = true;
+                officer[officerIndex].isAwaiting = false;
+                departmentToUpdate.Officer = [officer[officerIndex]];
 
-                    // Update the officer's Additional_Charge array
-                    officer[officerIndex].Additional_Charge.push(additionalCharge);
-                    departmentToUpdate.Officer.push(officer[officerIndex])
+                fnRefreshUI();
+            });
 
-                    fnRefreshUI();
-                });
             return;
         }
     }
