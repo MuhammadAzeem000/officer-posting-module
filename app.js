@@ -741,6 +741,7 @@ window.onload = function () {
                     () => {
                         //Occpuied officer gone into Awaited
                         exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
+                        exisitingOfficer.Department_Name = 'Services, General Administration &Coordination Department';
                         exisitingOfficer.Main_Position = 'Awaiting Posting';
                         exisitingOfficer.isPosted = false;
                         exisitingOfficer.isAwaiting = true;
@@ -799,6 +800,7 @@ window.onload = function () {
             fnShowModal(modalText, () => {
                 //exisiting officer
                 exisitingOfficer = officer.find(off => off.Id == departmentToUpdate.Officer[0].Id);
+                exisitingOfficer.Department_Name = 'Services, General Administration &Coordination Department';
                 exisitingOfficer.Main_Position = 'Awaiting Posting';
                 exisitingOfficer.isPosted = false;
                 exisitingOfficer.isAwaiting = true;
