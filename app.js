@@ -592,7 +592,9 @@ window.onload = function () {
             fnShowModal(modalText, () => {
                 officer[officerIndex].Department_Name = department[departmentToUpdateIndex].Department_Name
                 officer[officerIndex].Main_Position = department[departmentToUpdateIndex].Main_Position
+                officer[officerIndex].Department_Id = department[departmentToUpdateIndex].Id;
                 officer[officerIndex].isPosted = true;
+                officer[officerIndex].isCancel = true;
                 department[departmentToUpdateIndex].Officer = [officer[officerIndex]];
 
                 fnRefreshUI();
