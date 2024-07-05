@@ -452,7 +452,9 @@ window.onload = function () {
         if (isCancel === true) {
             const button = document.createElement('button');
             button.classList.add('btn', 'btn-light-danger', 'btn-sm', 'ml-2');
-            button.textContent = 'Cancel'
+            const crossIcon = document.createElement('i');
+            crossIcon.classList.add('icon-1x', 'flaticon2-cancel-music')
+            button.appendChild(crossIcon);
             button.addEventListener('click', () => {
                 fnCancelPosition(o, Id)
             });
@@ -755,6 +757,13 @@ window.onload = function () {
                         fnRefreshUI();
                     },
                     () => {
+                        //Occpuied officer gone into Awaited
+                        exisitingOfficerIndex = officer.findIndex(off => off.Id == departmentToUpdate.Officer[0].Id);
+                        officer[exisitingOfficerIndex].Department_Name = 'Services, General Administration &Coordination Department';
+                        officer[exisitingOfficerIndex].Main_Position = 'Awaiting Posting';
+                        officer[exisitingOfficerIndex].isPosted = false;
+                        officer[exisitingOfficerIndex].isAwaiting = true;
+
                         // Create the Additional Charge object
                         const additionalCharge = {
                             Department_Id: departmentToUpdate.Id,
@@ -767,7 +776,7 @@ window.onload = function () {
 
                         // Update the officer's Additional_Charge array
                         officer[officerIndex].Additional_Charge.push(additionalCharge);
-                        departmentToUpdate.Officer.push(officer[officerIndex])
+                        departmentToUpdate.Officer = [officer[officerIndex]]
 
                         fnRefreshUI();
                     });
